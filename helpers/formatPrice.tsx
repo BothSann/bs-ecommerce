@@ -1,9 +1,9 @@
-import { Decimal } from "@prisma/client/runtime/library";
+import { Prisma } from "@/app/generated/prisma";
 
-export function formatPrice(price: number | string | Decimal): string {
+export function formatPrice(price: number | string | Prisma.Decimal): string {
   let numericPrice: number;
 
-  if (price instanceof Decimal) {
+  if (price instanceof Prisma.Decimal) {
     numericPrice = price.toNumber();
   } else {
     numericPrice = typeof price === "string" ? parseFloat(price) : price;
