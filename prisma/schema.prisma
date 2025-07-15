@@ -18,6 +18,8 @@ model Product {
   id          String   @id @default(uuid())
   name        String
   price       Decimal  @db.Decimal(10, 2)
+  image       String?
+  slug        String   @unique
   description String?
   category    Category @relation(fields: [categoryId], references: [id])
   categoryId  String

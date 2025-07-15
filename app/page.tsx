@@ -1,7 +1,11 @@
-import { products } from "@/lib/mocks-data";
 import ProductCard from "./_components/ProductCard";
+import { prisma } from "@/lib/prisma";
 
-export default function HomePage() {
+export default async function HomePage() {
+  // Fetch products from the database
+  const products = await prisma.product.findMany();
+  console.log(products);
+
   return (
     <main className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6">Home</h1>

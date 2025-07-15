@@ -1,5 +1,13 @@
-export function formatPrice(price: number | string): string {
-  const numericPrice = typeof price === "string" ? parseFloat(price) : price;
+import { Decimal } from "@prisma/client/runtime/library";
+
+export function formatPrice(price: number | string | Decimal): string {
+  let numericPrice: number;
+
+  if (price instanceof Decimal) {
+    numericPrice = price.toNumber();
+  } else {
+    numericPrice = typeof price === "string" ? parseFloat(price) : price;
+  }
 
   if (
     isNaN(numericPrice) ||
