@@ -1,6 +1,6 @@
 import { formatPrice } from "@/helpers/formatPrice";
-import Image from "next/image";
 import { Product } from "@/app/generated/prisma";
+import Image from "next/image";
 
 import {
   Card,
